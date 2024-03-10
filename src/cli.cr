@@ -8,7 +8,7 @@ BANNER =
 |    __/|  _  |__ --|__ --|  |  |  |  _  |   _|  _  |
 |___|   |___._|_____|_____|________|_____|__| |_____|
 "
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 APP = "password"
 
 class Cli
@@ -51,6 +51,16 @@ class Cli
       parser.on CommandName::Generate.to_s.downcase, "Generate a random password.".colorize.white.bold.to_s do
         sub_command = GenerateCommand.new
         parser.banner = "#{"Usage:".colorize.yellow.bold} #{APP} generate"
+        parser.on "-l LENGTH", "--length=LENGTH", "Length of the password to generate.".colorize.white.bold.to_s do |length|
+          unless length.nil?
+            begin
+              sub_command.length = length.to_i
+            rescue
+              STDERR.puts "The length of the password is expected to be an integer, got '#{length}'".colorize.red.bold.to_s
+              exit 1
+            end
+          end
+        end
         cmd.sub_command = sub_command
       end
 

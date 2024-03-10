@@ -1,5 +1,6 @@
 require "./utils"
 require "./pwned"
+require "./generate"
 
 enum CommandName
   Pwned
@@ -29,13 +30,13 @@ class PwnedCommand < SubCommand
     end
     count = Pwned.count(@password)
     if count > 0
-      msg = "Password pawned #{count} times."
+      msg = "Password was pawned #{count} times."
       if @show_password
           msg = "Password '#{@password}' was pwned #{count} times."
       end
       puts msg.colorize.red.bold.to_s
     else
-      msg = "Password not pawned."
+      msg = "Password was not pawned."
       if @show_password
           msg = "Password '#{@password}' was not pwned."
       end
@@ -45,8 +46,10 @@ class PwnedCommand < SubCommand
 end
 
 class GenerateCommand < SubCommand
+  property length = 16
+
   def execute
-    puts "Generate password: not implemented yet"
+    puts Generate.password @length
   end
 end
 
