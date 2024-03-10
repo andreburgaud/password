@@ -1,26 +1,41 @@
 # password
 
-TODO: Write a description here
+`password` is a command line tool that helps generate passwords and check passwords against previous data breaches (https://haveibeenpwned.com/).
 
-## Installation
-
-TODO: Write installation instructions here
+I created this projet as a means to learn and experiment with the [Crystal](https://crystal-lang.org/) programming language.
 
 ## Usage
 
-TODO: Write usage instructions here
+Docker is the easiest way to use 'password':
+
+```
+docker run --rm -it andreburgaud/password --help
+```
 
 ## Development
 
-TODO: Write development instructions here
+### Requirements
 
-## Contributing
+1. [Crystal](https://crystal-lang.org/) needs to be installed on your system.
+1. [just](https://github.com/casey/just) is optional but recommended to build the executable.
 
-1. Fork it (<https://github.com/your-github-user/pwned/fork>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+### Build
+
+To build a local debug version:
+
+```
+just build
+```
+
+A file named `password` will be generated at the root of the project.
+
+To build a release version:
+
+```
+just release
+```
+
+You will find a `password` executable file in a subdiretory of the `bin` directory.
 
 ## Contributors
 
