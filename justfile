@@ -11,6 +11,8 @@ alias d := dist
 alias db := docker-build
 alias ds := docker-scout
 alias dp := docker-push
+alias v := version
+alias ghp := github-push
 
 # Default recipe (this list)
 default:
@@ -49,3 +51,13 @@ docker-push: docker-build
     docker push docker.io/{{DOCKER_IMAGE}}:{{VERSION}}
     docker tag {{DOCKER_IMAGE}}:{{VERSION}} docker.io/{{DOCKER_IMAGE}}:latest
     docker push docker.io/{{DOCKER_IMAGE}}:latest
+
+# Push and tag the code to Github
+github-push: version
+    @git push
+    @git tag -a {{VERSION}} -m "Version {{VERSION}}"
+    @git push origin --tags
+
+# Display the version
+version:
+    @echo "version {{VERSION}}"
