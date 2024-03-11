@@ -4,6 +4,8 @@
 
 I created this projet as a means to learn and experiment with the [Crystal](https://crystal-lang.org/) programming language.
 
+![Password CLI Help Screenshot](https://github.com/andreburgaud/password/assets/6396088/c375ae9d-5c3d-4f1a-bfd2-fcfabc45bf29)
+
 ## Usage
 
 Docker is the easiest way to use 'password':
